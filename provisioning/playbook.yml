@@ -1,0 +1,5 @@
+---
+- hosts: default
+  roles:
+    - aptgetable
+    - oh-my-zsh

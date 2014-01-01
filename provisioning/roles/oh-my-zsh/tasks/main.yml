@@ -1,0 +1,14 @@
+---
+- name: git
+  sudo: yes
+  apt: pkg=git
+
+- name: zsh
+  sudo: yes
+  apt: pkg=zsh
+
+- name: oh-my-zsh
+  git: repo=git://github.com/robbyrussell/oh-my-zsh.git dest={{ home_dir }}/.oh-my-zsh
+
+- name: .zshrc
+  template: src=zshrc.zsh-template dest={{ home_dir }}/.zshrc
