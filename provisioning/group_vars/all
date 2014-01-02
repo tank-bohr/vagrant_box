@@ -1,4 +1,4 @@
-upgrade_packages: False
+upgrade_packages: True
 
 home_dir: '{{ ansible_env.HOME }}'
 user: '{{ ansible_user_id }}'
