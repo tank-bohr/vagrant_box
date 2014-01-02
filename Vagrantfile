@@ -57,7 +57,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.provision :ansible do |ansible|
     ansible.playbook = 'provisioning/playbook.yml'
-    ansible.verbose = 'vvv'
+    ansible.verbose = 'vv'
   end
 
   # Enable provisioning with Puppet stand alone.  Puppet manifests
