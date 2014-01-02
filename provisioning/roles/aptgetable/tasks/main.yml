@@ -6,3 +6,4 @@
 - name: upgrade packages
   sudo: yes
   apt: update_cache=yes upgrade=dist
+  when: upgrade_packages

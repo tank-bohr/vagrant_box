@@ -12,3 +12,11 @@
 
 - name: .zshrc
   template: src=zshrc.zsh-template dest={{ home_dir }}/.zshrc
+
+- name: find zsh
+  command: which zsh
+  register: which_zsh
+
+- name: set zsh as default shell
+  sudo: yes
+  user: name={{user}} shell={{which_zsh.stdout}}
