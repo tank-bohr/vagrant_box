@@ -1,17 +1,17 @@
 ---
-- name: git
+- name: packages
   sudo: yes
-  apt: pkg=git
-
-- name: zsh
-  sudo: yes
-  apt: pkg=zsh
+  apt: pkg={{ item }} state=latest update_cache=yes
+  with_items:
+    - git
+    - zsh
 
 - name: oh-my-zsh
   git: repo=git://github.com/robbyrussell/oh-my-zsh.git dest={{ home_dir }}/.oh-my-zsh
 
 - name: .zshrc
-  template: src=zshrc.j2 dest={{ home_dir }}/.zshrc
+  sudo: yes
+  template: src=zshrc.j2 dest={{ home_dir }}/.zshrc owner={{ user }}
 
 - name: find zsh
   command: which zsh
@@ -19,4 +19,4 @@
 
 - name: set zsh as default shell
   sudo: yes
-  user: name={{user}} shell={{which_zsh.stdout}}
+  user: name={{ user }} shell={{ which_zsh.stdout }}
