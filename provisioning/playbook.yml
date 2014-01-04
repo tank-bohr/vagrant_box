@@ -1,5 +1,6 @@
 ---
 - hosts: all
+  sudo: yes
   roles:
     - aptgetable
     - oh-my-zsh

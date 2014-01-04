@@ -1,22 +1,19 @@
 ---
 - name: packages
-  sudo: yes
   apt: pkg={{ item }} state=latest update_cache=yes
   with_items:
     - git
     - zsh
 
 - name: oh-my-zsh
-  git: repo=git://github.com/robbyrussell/oh-my-zsh.git dest={{ home_dir }}/.oh-my-zsh
+  git: repo=git://github.com/robbyrussell/oh-my-zsh.git dest=~{{ user }}/.oh-my-zsh
 
 - name: .zshrc
-  sudo: yes
-  template: src=zshrc.j2 dest={{ home_dir }}/.zshrc owner={{ user }}
+  template: src=zshrc.j2 dest=~{{ user }}/.zshrc owner={{ user }}
 
 - name: find zsh
   command: which zsh
   register: which_zsh
 
 - name: set zsh as default shell
-  sudo: yes
   user: name={{ user }} shell={{ which_zsh.stdout }}

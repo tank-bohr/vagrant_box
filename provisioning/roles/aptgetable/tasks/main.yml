@@ -1,9 +1,7 @@
 ---
 - name: install python-apt
-  sudo: yes
   command: apt-get install -y python-apt
 
 - name: upgrade packages
-  sudo: yes
   apt: update_cache=yes upgrade=dist
   when: upgrade_packages
